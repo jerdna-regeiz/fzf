@@ -55,7 +55,7 @@ __fzf_history_dedup__() {
   if [ -z ${FZF_UNIQUE_HISTORY+x} ]; then
     cat
   else
-    perl -ne 'print if !$seen{($_ =~ s/^[0-9\s]*//r)}++'
+    tac | perl -ne 'print if !$seen{($_ =~ s/^[0-9\s]*//r)}++' | tac
   fi
 }
 __fzf_history__() (
